@@ -1,0 +1,47 @@
+<div class="row home">
+  <div class="col-sm-3 game-title">
+  <form>
+    <div class="form-group">
+      <input type="email" class="form-control search" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="例 Fortnite">
+      <div class="game-title-main">
+        <% @groups.each do |group| %>
+            <p><%= link_to group.name, root_path(group_id:group.id),class:'btn btn-outline-dark btn-block game-name'%></p>
+        <% end %>
+      </div>
+    </div>
+  </form>
+  
+  </div>
+  <div class="col-sm-3 channels">
+    <p>channels</p>
+    <% @channels.each do |channel| %>
+      <p><%= link_to channel.name, root_path(group_id:channel.group_id,channel_id:channel.id),class:'btn btn-outline-dark btn-block channels-name'%></p>
+
+    <% end %>
+  </div>
+  <div class="col-sm-6 ">
+    <p>トーク</p>
+    <div class="media">
+       <svg class="bd-placeholder-img mr-3" width="64" height="64" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 64x64"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"/><text x="50%" y="50%" fill="#dee2e6" dy=".3em">64x64</text></svg>
+      <div class="media-body">
+        <h5 class="mt-0">koyo</h5>
+        よろしくおねがいします
+      </div>
+    </div>
+    <div class="message_form">
+      <form>
+        <div class="row">
+          <div class="col">
+            <input type="text" class="form-control" placeholder="入力してください">
+          </div>
+        </div>
+      </form>
+      <i class="fas fa-images fa-2x">
+        <%# <form>
+          <div class="form-group">
+            <input type="file" class="form-control-file" id="exampleFormControlFile1">
+          </div>
+        </form> %>
+      </i>
+  </div>
+</div>
