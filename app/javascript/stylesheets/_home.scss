@@ -1,0 +1,85 @@
+html {
+  height: 100%;
+}
+body {
+  height: 100%;
+  padding-top: 4rem;
+}
+
+.main{
+  height: 100%;
+  margin-left: 0px;
+  margin-right: 0px;
+  padding-top: 9px;
+  width: 100%;
+  flex-wrap: nowrap;
+}
+.home{
+  height: 100%;
+}
+.game-title{
+  background-color: red;
+  height: 100%;
+}
+.channels{
+  background-color: gray;
+  height: 100%;
+}
+.chat{
+  background-color: aqua;
+  height: 100%;
+}
+.search{
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
+.game-name{
+  margin-bottom: 10px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 45px;
+
+  h3{
+    margin-top: 0;
+    font-size: 20px;
+  }
+}
+@media screen and (min-width:1024px) {
+  .home{
+    width: 100%;
+    display: flex;
+    flex-wrap: nowrap;
+    margin-right: 0;
+    margin-left: 0;
+  }
+  .game-title, .channels{
+    max-width: 250px;
+    width: 250px;
+  }
+  .chat{
+    width: calc(100% - 500px);
+  }
+  .main{
+    padding-right: 0;
+    padding-left: 0;
+  }
+}
+// @media (min-width: 768px){
+//   .navbar-right {
+//     margin-right: 0;
+//   }
+// }
+.submit_form{
+  margin-top: 30px;
+}
+.header_right{
+  display: flex;
+}
+.MyAccount{
+  justify-content:flex-end;
+}
+.message_form{
+  display: flex;
+}
