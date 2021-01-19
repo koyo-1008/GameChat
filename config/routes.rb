@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
-  get 'users/new'
+  devise_for :users
+  # get 'users/new'
   root 'home#index'
-  resources :users
-  resources :tweets
+  resources :groups, only: :index
+  resources :channels, only: [:index, :create]
+  resources :comments, only: [:index, :create, :destroy]
+  # resources :users
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
