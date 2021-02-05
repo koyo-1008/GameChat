@@ -1,96 +1,52 @@
 <template>
-  <div id="app" class="home ">
-    <div class="game-title">
-      <form>
-        <div class="form-group">
-          <input type="text" class="form-control search" id="exampleInputEmail1"  placeholder="例 Fortnite">
-        </div>
-      </form>
-      <div class="game-title-main">
-        <p v-for="group in groups" :key="group">
-          <a class="btn btn-outline-dark btn-block game-name" @click.prevent="fetchChannels(group.id)">{{ group.name }}</a>
-        </p>
-      </div>
-    </div>
-    <div class=" channels">
-      <a class=" btn btn-outline-dark btn-block channels-name channle-create-button" data-toggle="modal" data-target="#Modal">channelを作成</a>
-    <div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="Modal" aria-hidden="true">
-      <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="Modal">channel名を入力してください</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="閉じる">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body form-group">
-            <input class="form-control" v-model="channel.name" placeholder="例 スライムの会" >
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
-            <button type="button" class="btn btn-primary" @click.prevent="addChannel">保存</button>
-          </div>
-        </div>
-      </div>
-    </div>
-      <p v-for="channel in channels" :key="channel.id">
-        <a class="btn btn-outline-dark btn-block channels-name" @click.prevent="fetchComments(channel.id)">{{ channel.name }}</a>
-      </p>
-    </div>
-    <div class=" talk-space">
-      <div class="media" v-for="comment in comments" :key="comment.id">
-        <div class="media-body">
-          <h5 class="mt-0">{{ comment.user.nickname }}</h5>
-          {{ comment.content }}
-        </div>
-      </div>
-      <div class="message_form">
-        <!-- <form @submit.prevent="addComment" class="form-inline">
-            <input class="form-control comment-content" type="text" v-model="comment.content" placeholder="メッセージを入力してください">
-            <button type="submit" class="btn btn-primary mb-2">Send</button>
-        </form> -->
-        <form @submit.prevent="addComment" class="message-main">
-          <div class="message-box">
-            <input type="text" class="form-control message-input" v-model="comment.content" placeholder="メッセージを入力してください">
-            <label class="message_image">
-              <i class="fas fa-image"></i>
-              <input name="uploadedImage"  type="file" class="file_image" @change="onFileChange()">
-            </label>
-          </div>
-          <div>
-            <button type="submit" class="btn btn-primary mb-2 message-sendbtn">Send</button>
-          </div>
-        </form>
-      </div>
-   </div>
+  <div id="app" class="home">
+    <GroupList
+      :groups="groups"
+      :currentGroupId="currentGroupId"
+      @searchGroups="searchGroups"
+      @fetchChannels="fetchChannels"
+    />
+    <ChannelList
+      :channels="channels"
+      :currentChannelId="currentChannelId"
+      @fetchComments="fetchComments"
+      @addChannel="addChannel"
+    />
+    <CommentList
+      :comments="comments"
+      @addComment="addComment"
+      @onFileChange="onFileChange"
+    />
   </div>
-
 </template>
 
 <script>
 import axios from 'axios'
+import GroupList from '../components/GroupList.vue'
+import ChannelList from '../components/ChannelList.vue'
+import CommentList from '../components/CommentList.vue'
 
 export default {
+  components: {
+    GroupList,
+    ChannelList,
+    CommentList
+  },
   data: function () {
     return {
       groups: [],
       channels: [],
-      channel:{
-        name: ''
-      },
-
       comments: [],
-      comment: {
-        content: ''
-      },
       currentGroupId: null,
       currentChannelId: null,
-      uploadedImage: ''
+      uploadFile: '',
+      originGroups: []
     }
   },
   methods: {
     fetchChannels(groupId) {
       this.currentGroupId = groupId
+      this.comments = []
       axios
       .get('/channels.json?group_id=' + groupId)
       .then(response => (this.channels = response.data))
@@ -101,44 +57,40 @@ export default {
       .get('/comments.json?channel_id=' + channelId)
       .then(response => (this.comments = response.data))
     },
-    addComment(){
-      this.comment.channel_id = this.currentChannelId
-      console.log(this.comment)
-      axios.post('/comments.json', { comment: this.comment })
-      // axios.post('/comments.json', ハッシュを渡しているため指定する必要がある→ { comment: this.comment })
+    addComment(comment){
+      const data = new FormData();    // multipart/form-data形式のため、new FormData()を使う
+      data.append('comment[content]', comment.content);    // file形式以外も送信可能
+      data.append('comment[file]', this.uploadFile);
+      data.append('comment[channel_id]', this.currentChannelId)
+      axios.post('/comments.json', data)
         .then((response) => {
           this.comments.push(response.data)
-          this.comment = {
-            content: ''
-          };
+          this.uploadFile = ""
+
+          this.$nextTick(() => {
+            var container = this.$el.querySelector("#toolbar-chat");
+            container.scrollTop = container.scrollHeight;
+          });
         })
         .catch((error) => {
-          if (error.response.status) {
+          if (error.response.status === 401) {
             alert('ログインが必要です')
           }
         })
     },
-    addChannel(){
-      this.channel.group_id = this.currentGroupId
-      axios.post('/channels.json', { channel: this.channel })
+    addChannel(channel){
+      channel.group_id = this.currentGroupId
+      axios.post('/channels.json', { channel })
       .then((response) => {
         this.channels.push(response.data)
-        this.channel = {
-          name: ''
-        };
-        this.uploadedImage = ''
-        this.$refs.file.value = ''
       })
     },
-    onFileChange() {
-      let file = event.target.files[0] || event.dataTransfer.files
-      let reader = new FileReader()
-      reader.onload = () => {
-        this.uploadedImage = event.target.result
-        this.comment.image = this.uploadedImage
-      }
-      reader.readAsDataURL(file)
+    onFileChange(e) {
+      this.uploadFile = e.target.files[0] 
     },
+    searchGroups(text) {
+      this.groups = this.originGroups.filter(x => x.name.includes(text))
+    }
   },
   mounted () {
     axios.defaults.headers.common = {
@@ -148,11 +100,23 @@ export default {
         .getAttribute("content"),
     };
 
-    axios// mountedが読まれた後にaxiosが発動されて、.get('APIのURL')ゲットしたら、.then(成功したとき)に帰ってきたデータをthis.groupsに代入する
+    axios
       .get('/groups.json')
-      .then(response => (this.groups = response.data))
+      .then(response => {
+        this.groups = response.data
+        this.originGroups = response.data
+        this.currentGroupId = this.groups[0].id
+        axios
+          .get('/channels.json?group_id=' + this.currentGroupId)
+          .then(response => {
+            this.channels = response.data
+            this.currentChannelId = this.channels[0].id
+            this.fetchComments(this.currentChannelId)
+            })
+      })
   }
 }
+
 </script>
 
 <style scoped>

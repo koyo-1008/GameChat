@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   devise_for :users
-  # get 'users/new'
   root 'home#index'
   resources :groups, only: :index
   resources :channels, only: [:index, :create]

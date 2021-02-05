@@ -1,25 +1,26 @@
-<h1>GameChatへようこそ</h1>
+<div class="imageSpace"> 
+  <div class="wrap">
+    <h1>GameChatへようこそ</h1>
+    <div >
+      <%= form_with(model: resource, url: user_registration_path, local: true) do |f| %>
+        <%= f.label :name %>
+        <%= f.text_field :name ,class:"form-control"%>
 
-<div class="form_group new_form">
-  <div >
-    <%= form_with(model: resource, url: user_registration_path, local: true) do |f| %>
-      <%= f.label :name %>
-      <%= f.text_field :name ,class:"form-control"%>
+        <%= f.label :email %>
+        <%= f.email_field :email ,class:"form-control"%>
 
-      <%= f.label :email %>
-      <%= f.email_field :email ,class:"form-control"%>
-
-      <%= f.label :nickname %>
-      <%= f.text_field :nickname ,class:"form-control"%>
+        <%= f.label :nickname %>
+        <%= f.text_field :nickname ,class:"form-control"%>
 
 
-      <%= f.label :password %>
-      <%= f.password_field :password ,class:"form-control"%>
+        <%= f.label :password %>
+        <%= f.password_field :password ,class:"form-control"%>
 
-      <%= f.label :password_confirmation, "Confirmation" %>
-      <%= f.password_field :password_confirmation,class:"form-control" %>
+        <%= f.label :password_confirmation, "Confirmation" %>
+        <%= f.password_field :password_confirmation,class:"form-control" %>
 
-      <%= f.submit "Create my account", class: "btn btn-primary submit_form" %>
-    <% end %>
+        <%= f.submit "Create my account", class: "btn btn-primary submit_form" %>
+      <% end %>
+    </div>
   </div>
 </div>
