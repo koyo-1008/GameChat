@@ -1,76 +1,114 @@
 html {
   height: 100%;
-}
-body {
-  height: 100%;
-  padding-top: 4rem;
-}
-
-.main{
-  height: 100%;
-  margin-left: 0px;
-  margin-right: 0px;
-  padding-top: 9px;
   width: 100%;
-  flex-wrap: nowrap;
-}
-.home{
-  height: 100%;
-}
-.game-title{
-  background-color: red;
-  height: 100%;
-}
-.channels{
-  background-color: gray;
-  height: 100%;
-}
-.chat{
-  background-color: aqua;
-  height: 100%;
-}
-.search{
-  margin-top: 30px;
-  margin-bottom: 20px;
-}
-.game-name{
-  margin-bottom: 10px;
-  border-radius: 5px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 45px;
-
-  h3{
-    margin-top: 0;
-    font-size: 20px;
-  }
-}
-@media screen and (min-width:1024px) {
-  .home{
+  body {
+    height: 100%;
+    padding-top: 3rem;
     width: 100%;
-    display: flex;
-    flex-wrap: nowrap;
-    margin-right: 0;
-    margin-left: 0;
-  }
-  .game-title, .channels{
-    max-width: 250px;
-    width: 250px;
-  }
-  .chat{
-    width: calc(100% - 500px);
-  }
-  .main{
-    padding-right: 0;
-    padding-left: 0;
+    .home{
+      padding-top: 10px;
+      height: 100%;
+      width: 100%;
+      display: flex;
+      .game-title{
+        background-color:  #d2d2d2;
+        height: 100%;
+        width: 300px;
+        border: solid 1px;
+        .form-group{
+          height: 50px;
+        }
+        .game-title-box{
+          width: 100%;
+          height: calc(100% - 70px);
+          overflow: scroll;
+          .game-name{
+            margin-bottom: 10px;
+            border-radius: 5px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 45px;
+            
+            h3{
+              margin-top: 0;
+              font-size: 20px;
+            }
+            .search{
+              margin-top: 30px;
+              margin-bottom: 20px;
+            }
+          }
+        }
+      }
+      .channels{
+        background-color: #d2d2d2;
+        height: 100%;
+        width: 300px;
+        border-right: solid 1px;
+        .channel-box{
+          height: calc(100% - 70px);
+          width: 100%;
+          overflow: scroll;
+        }
+        .channle-create-button{
+          margin-bottom: 30px;
+          height: 40px;
+        }
+      }
+      .talk-space{
+        height: 100%;
+        width: 100%;
+        position:relative;
+        .comment-box{
+          height: calc(100% - 50px);
+          width: 100%;
+          background-color: wheat;
+          overflow: scroll;
+          .media{
+            margin: 20px;
+            // border: solid 1px;
+          }
+        }
+        .message_form{
+          background-color:  #d2d2d2;
+          height: 50px;
+          width: 100%;
+          position: absolute;
+          bottom:0;
+          .message-main{
+            display: flex;
+            padding-top: 5px;
+            margin: auto;
+            width: 580px;
+            position: relative;
+            .message-box{
+              .message-input{
+                width:500px;
+              }
+              .message_image{
+                position: absolute;
+                right: 90px;
+                bottom: 7px;
+              }
+            }
+            .message-sendbtn{
+              width: 80px;
+            }
+          }
+        }
+      }
+    }
   }
 }
-// @media (min-width: 768px){
-//   .navbar-right {
-//     margin-right: 0;
-//   }
-// }
+
+.file_image{
+  display: none;
+}
+.file_input{
+  height: 200px;
+  width: 200px;
+}
 .submit_form{
   margin-top: 30px;
 }
@@ -81,5 +119,9 @@ body {
   justify-content:flex-end;
 }
 .message_form{
-  display: flex;
+  width: 100%;
+
+  .comment-content {
+    width: 100%;
+  }
 }
