@@ -22,11 +22,11 @@ group :development, :test do
   gem 'byebug',  '11.1.3', platforms: [:mri, :mingw, :x64_mingw]
   gem 'rspec-rails', '~> 4.0.2'
   gem 'factory_bot_rails'
-  gem "capistrano", "~> 3.10", require: false
-  gem "capistrano-rails", "~> 1.6", require: false
   gem 'capistrano-rbenv'
   gem 'capistrano3-unicorn'
-  gem 'capistrano-bundler'
+  gem "capistrano", "~> 3.10", require: false
+  gem "capistrano-rails", "~> 1.6", require: false
+  gem 'capistrano-bundler', '~> 2.0'
 end
 
 group :development do
