@@ -1,5 +1,5 @@
 # config valid for current version and patch releases of Capistrano
-lock "~> 3.15.0"
+lock "~> 3.11.2"
 
 set :application, "GameChat"
 set :repo_url, "git@github.com:koyo-1008/GameChat.git"
