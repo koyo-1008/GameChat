@@ -17,9 +17,9 @@ gem 'turbolinks',                 '5.2.1'
 gem 'jbuilder',                   '2.10.0'
 gem 'bootsnap',                   '1.4.6', require: false
 gem 'devise' 
+gem 'mysql2', '0.5.2'
 
 group :development, :test do
-  gem 'sqlite3', '1.4.2'
   gem 'byebug',  '11.1.3', platforms: [:mri, :mingw, :x64_mingw]
   gem 'rspec-rails', '~> 4.0.2'
   gem 'factory_bot_rails'
