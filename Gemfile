@@ -16,6 +16,7 @@ gem 'turbolinks',                 '5.2.1'
 gem 'jbuilder',                   '2.10.0'
 gem 'bootsnap',                   '1.4.6', require: false
 gem 'devise' 
+gem 'aws-sdk-s3', '1.46.0', require: false
 gem 'mysql2', '0.5.2'
 
 group :development, :test do
@@ -48,7 +49,6 @@ group :test do
 end
 
 group :production do
-  gem 'aws-sdk-s3', '1.46.0', require: false
   gem 'unicorn', '5.4.1'
 end
 
