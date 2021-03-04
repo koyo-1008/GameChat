@@ -1,24 +1,47 @@
-# README
+✅ポートフォリオ名　GameChat
+オンラインゲーム初心者向けの交流を目的にしたチャットサービスです。
+ゲームタイトルの中に複数のchannelがあり、ユーザー自身でchannelを作成しそのchannle中でチャットをすることができます。
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+✅機能一覧
+ユーザー登録機能(devise）
+ログイン機能(device）
+コメント投稿機能
+画像投稿機能
+channel作成機能
 
-Things you may want to cover:
+✅このアプリケーションを作成したきっかけ
+自分自身オンラインゲームが大好きで、小学６年生の頃からずっとハマっていました。
+しかし、周りに一緒にやってくれる友人がおらず、ゲームによってはゲーム内でチャットができる機能がなかったり、とてもチャットしにくかったりといったことがあり、どうやって交流を深めて良いか悩んでいました。
+Twitter等で交流を深めれば良いと思っていましたが、Twitterのハッシュタグ　→＃（これのことです）　でフレンド募集等の検索しても一文字違うだけでヒットしなかったりしました。
+また、最初はTwitterに慣れていないといった理由でゲームを一緒に遊べる人を探すのは困難を極めました。
+そういった経験から、オンラインゲームで友人がいなくて交流する機会が欲しいという人のために、オンラインゲーム専用の交流が簡単にできるアプリケーションを作成しました。
 
-* Ruby version
+✅使用技術
+・Ruby　2.5.1
+・Ruby on Rails  6.0.3.4
+・Vue.js
+・Bootstrap4
+・HTML
+・CSS
+・MySQL　5.6.47
+・Webpack
+・RSpec
+・AWS
+・S3
+・Capistrano　3.15.0
+・unicorn　5.5.4
+・Active Storage
+・device
 
-* System dependencies
+✅ゲストユーザーID&パスワード
+Email→　『testuser1@hoge.co.jp』
+password→ 『koyo1008』
+よろしければこちらでログインしてください
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+✅特に見ていただきたい点
+・RailsアプリケーションにJavaScriptフレームワークであるVue.jsを導入している点
+・Vue.jsを使って非同期でチャットができる点
+・コンポーネント化されており、コードが見やすい点
+・アプリケーションのUIが直感的で操作しやすくしている点
+・の
+・
