@@ -6,6 +6,11 @@ __✅ポートフォリオ名　GameChat__
 
 GameChat　URL→　<http://18.177.86.54/>  
 
+参考画像　　
+
+<img width="1680" alt="スクリーンショット 2021-03-04 23 52 09" src="https://user-images.githubusercontent.com/58773090/109981979-cae22b00-7d44-11eb-96b1-6071b5231db5.png">
+
+
 --------------------------------------
 
 __✅機能一覧__
