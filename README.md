@@ -6,7 +6,7 @@ __✅ポートフォリオ名　GameChat__
 
 GameChat　URL→　<http://18.177.86.54/>  
 
-ゲストユーザーID&パスワード__
+ゲストユーザーID&パスワード
 
 Email→　『testuser1@hoge.co.jp』
 
