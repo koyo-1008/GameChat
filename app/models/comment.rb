@@ -4,6 +4,8 @@ class Comment < ApplicationRecord
   belongs_to :user
 
   has_one_attached :file
+
+
   def file_url
     file.attached? ? url_for(file) : nil
   end
