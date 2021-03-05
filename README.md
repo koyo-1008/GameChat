@@ -93,7 +93,7 @@ belongs_to :channel
 |name|string| default: "",null: false|
 |group_id|integer| null: false|
 
-###Association
+### Association
 belongs_to :group
 has_many :comments
 
