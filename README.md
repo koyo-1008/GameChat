@@ -36,6 +36,70 @@ __✅機能一覧__
 
 --------------------------------------
 
+__✅DB設計__
+
+__usersテーブル__
+
+
+|Column|Type|Options|
+|------|----|-------|
+|name|string|default: "",null:false|
+|nickname|string|null:false|
+|email|string|default: "",null:false,unique: true|
+|name|string|null:false|
+|encrypted_password|string|default: "",null:false|
+|reset_password_token|string|unique: true|
+
+
+##groupsテーブル
+
+
+|Column|Type|Options|
+|------|----|-------|
+|name|string|default: "", null: false|
+
+###Association
+
+has_many :channels
+
+##group_usersテーブル
+
+
+|Column|Type|Options|
+|------|----|-------|
+|user_id|integer| null: false|
+|group_id|integer| null: false|
+
+
+##commentsテーブル
+
+
+|Column|Type|Options|
+|------|----|-------|
+|user_id|integer| null: false|
+|channle_id|integer| null: false|
+|content|text|-------|
+
+###Association
+belongs_to :user
+belongs_to :channel
+
+##channlesテーブル
+
+
+|Column|Type|Options|
+|------|----|-------|
+|name|string| default: "",null: false|
+|group_id|integer| null: false|
+
+###Association
+belongs_to :group
+has_many :comments
+
+
+
+
+
 
 __✅このアプリケーションを作成したきっかけ__
 
