@@ -94,13 +94,11 @@ belongs_to :channel
 |group_id|integer| null: false|
 
 ### Association
+
 belongs_to :group
 has_many :comments
 
-
-
-
-
+--------------------------------------
 
 __✅このアプリケーションを作成したきっかけ__
 
