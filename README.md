@@ -38,7 +38,7 @@ __✅機能一覧__
 
 __✅DB設計__
 
-__usersテーブル__
+## usersテーブル
 
 
 |Column|Type|Options|
@@ -51,18 +51,18 @@ __usersテーブル__
 |reset_password_token|string|unique: true|
 
 
-##groupsテーブル
+## groupsテーブル
 
 
 |Column|Type|Options|
 |------|----|-------|
 |name|string|default: "", null: false|
 
-###Association
+### Association
 
 has_many :channels
 
-##group_usersテーブル
+## group_usersテーブル
 
 
 |Column|Type|Options|
@@ -71,7 +71,7 @@ has_many :channels
 |group_id|integer| null: false|
 
 
-##commentsテーブル
+## commentsテーブル
 
 
 |Column|Type|Options|
@@ -80,11 +80,12 @@ has_many :channels
 |channle_id|integer| null: false|
 |content|text|-------|
 
-###Association
+### Association
+
 belongs_to :user
 belongs_to :channel
 
-##channlesテーブル
+## channlesテーブル
 
 
 |Column|Type|Options|
