@@ -6,6 +6,15 @@ __✅ポートフォリオ名　GameChat__
 
 GameChat　URL→　<http://18.177.86.54/>  
 
+ゲストユーザーID&パスワード__
+
+Email→　『testuser1@hoge.co.jp』
+
+password→ 『koyo1008』
+
+よろしければこちらでログインしてください
+
+
 参考画像　　
 
 <img width="1680" alt="スクリーンショット 2021-03-04 23 52 09" src="https://user-images.githubusercontent.com/58773090/109981979-cae22b00-7d44-11eb-96b1-6071b5231db5.png">
@@ -69,16 +78,6 @@ __✅使用技術__
 ・Active Storage
 
 ・device
-
---------------------------------------
-
-__✅ゲストユーザーID&パスワード__
-
-Email→　『testuser1@hoge.co.jp』
-
-password→ 『koyo1008』
-
-よろしければこちらでログインしてください
 
 --------------------------------------
 
